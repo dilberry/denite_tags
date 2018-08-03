@@ -55,7 +55,7 @@ class Source(Base):
         return [x for x in self.vim.call(
             'map', tagfiles, 'fnamemodify(v:val, ":p")') if exists(x)]
 
-    def parse_tagline(line, tagpath):
+    def parse_tagline(self, line, tagpath):
         elem = line.split("\t")
         file_path = elem[1] if exists(elem[1]) else normpath(join(dirname(tagpath), elem[1]))
         info = {
